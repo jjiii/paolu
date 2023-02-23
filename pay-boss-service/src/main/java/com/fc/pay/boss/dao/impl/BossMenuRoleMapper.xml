@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fc.pay.boss.dao.BossMenuRoleMapper">
+	<resultMap id="BaseResultMap" type="com.fc.pay.boss.entity.BossMenuRole" >
+		<id column="id" property="id" jdbcType="BIGINT" />
+		<result column="version" property="version" jdbcType="BIGINT" />
+		<result column="creater" property="creater" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="editor" property="editor" jdbcType="VARCHAR" />
+		<result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+		<result column="status" property="status" jdbcType="VARCHAR" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+		<result column="role_id" property="roleId" jdbcType="BIGINT" />
+		<result column="menu_id" property="menuId" jdbcType="BIGINT" />
+	</resultMap>
+	
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+		id, version, creater, create_time AS createTime, editor, edit_time AS editTime, status, remark, role_id AS roleId, menu_id AS menuId
+	</sql>
+	
+	<delete id="deleteByMap" parameterType="Map" >
+    	delete from boss_menu_role
+		<where>
+			<if test=" menuId!=null and menuId !='' ">
+				and menu_id = #{menuId}
+			</if>
+			<if test=" roleId!=null and roleId !='' ">
+				and role_id = #{roleId}
+			</if>
+		</where>
+ 	</delete>
+	
+	<!-- 查询角色下所绑定的菜单 ID-->
+	<select id="selectListMenuIds" parameterType="Long" resultType="Long">
+		SELECT menu_id FROM boss_menu_role WHERE role_id = #{roleId}
+	</select>
+	
+	<!-- 分配菜单 -->
+	<insert id="insertBatchMenuRole" parameterType="List" >
+		INSERT INTO boss_menu_role (creater,create_time,role_id,menu_id) VALUES
+		<foreach collection ="list" item="menuRole" index= "index" separator =",">
+			(#{menuRole.creater},
+			#{menuRole.createTime},
+			#{menuRole.roleId},
+			#{menuRole.menuId})
+        </foreach >
+	</insert>
+</mapper>

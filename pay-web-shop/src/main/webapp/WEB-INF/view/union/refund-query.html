@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<#assign base="${request.contextPath}">
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Welcome</title>
+	</head> 
+	<body>
+		<h2>银联(退款查询)：</h2>
+		<div>
+		
+		<!-- <form action="http://localhost:8082/pay-gateway/trade/refund/query" method="post"> -->
+		<!-- <form action="http://test.carisok.com/pay-web-gateway/trade/refund/query" method="post"> -->
+		<form id="queryForm" action="http://test.carisok.com/pay-web-shop/mch/pay/queryRefund" method="post">
+			  		=============必填字段======================================<br />
+			  		
+			  		商户编号：	<input  name="merchantAppCode" value="1481083760950" /><br />
+		          	支付渠道：	<input  name="channel" value="alipay"><br />
+		          	秘钥：		<input  name="sign" value="sign"/><br />
+		          	
+		          	商户退款订单号：		<input  name="refundMerchantNo" value="0001" /><br />
+		          	
+		          	
+		          	<br />
+		          	<br />
+		          	<br />
+		          	=============可选字段======================================<br />
+		          	<br />
+		          	枫车退款订单	:	<input  name="refundNo" value="" /><br />
+		          	
+		          	
+		          <p class="pay_btn">
+		            <input type="submit" value="查询" />
+		          </p>
+		 </form>
+		 </div>
+	</body>
+</html>

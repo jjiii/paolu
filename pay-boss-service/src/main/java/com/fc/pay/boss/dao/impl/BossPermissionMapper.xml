@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fc.pay.boss.dao.BossPermissionMapper">
+	<resultMap id="BaseResultMap" type="com.fc.pay.boss.entity.BossPermission" >
+		<id column="id" property="id" jdbcType="BIGINT" />
+		<result column="version" property="version" jdbcType="BIGINT" />
+		<result column="creater" property="creater" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="editor" property="editor" jdbcType="VARCHAR" />
+		<result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+		<result column="status" property="status" jdbcType="VARCHAR" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+		<result column="permission_name" property="permissionName" jdbcType="VARCHAR" />
+		<result column="permission" property="permission" jdbcType="VARCHAR" />
+		<result column="menu_id" property="menuId" jdbcType="BIGINT" />
+	</resultMap>	
+	
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+		id, version, creater, create_time AS createTime, editor, edit_time AS editTime, status, remark, permission_name AS permissionName, permission,menu_id menuId
+	</sql>
+	
+	<insert id="insertSelective" parameterType="BossPermission" useGeneratedKeys="true" keyProperty="id">
+		insert into boss_permission
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+		  <if test="id != null" >
+		    id,
+		  </if>
+		  <if test="version != null" >
+		    version,
+		  </if>
+		  <if test="creater != null" >
+		    creater,
+		  </if>
+		  <if test="createTime != null" >
+		    create_time,
+		  </if>
+		  <if test="editor != null" >
+		    editor,
+		  </if>
+		  <if test="editTime != null" >
+		    edit_time,
+		  </if>
+		  <if test="status != null" >
+		    status,
+		  </if>
+		  <if test="remark != null" >
+		    remark,
+		  </if>
+		  <if test="permissionName != null" >
+		    permission_name,
+		  </if>
+		  <if test="permission != null" >
+		    permission,
+		  </if>
+		  <if test="menuId != null" >
+		    menu_id,
+		  </if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides="," >
+		  <if test="id != null" >
+		    #{id,jdbcType=BIGINT},
+		  </if>
+		  <if test="version != null" >
+		    #{version,jdbcType=BIGINT},
+		  </if>
+		  <if test="creater != null" >
+		    #{creater,jdbcType=VARCHAR},
+		  </if>
+		  <if test="createTime != null" >
+		    #{createTime,jdbcType=TIMESTAMP},
+		  </if>
+		  <if test="editor != null" >
+		    #{editor,jdbcType=VARCHAR},
+		  </if>
+		  <if test="editTime != null" >
+		    #{editTime,jdbcType=TIMESTAMP},
+		  </if>
+		  <if test="status != null" >
+		    #{status,jdbcType=VARCHAR},
+		  </if>
+		  <if test="remark != null" >
+		    #{remark,jdbcType=VARCHAR},
+		  </if>
+		  <if test="permissionName != null" >
+		    #{permissionName,jdbcType=VARCHAR},
+		  </if>
+		  <if test="permission != null" >
+		    #{permission,jdbcType=VARCHAR},
+		  </if>
+		  <if test="menuId != null" >
+		    #{menuId,jdbcType=BIGINT},
+		  </if>
+		</trim>
+	</insert>
+	  
+	<update id="updateSelectiveById" parameterType="BossPermission" >
+		update boss_permission
+		<set >
+		  <if test="version != null" >
+		    version = #{version,jdbcType=BIGINT},
+		  </if>
+		  <if test="creater != null" >
+		    creater = #{creater,jdbcType=VARCHAR},
+		  </if>
+		  <if test="createTime != null" >
+		    create_time = #{createTime,jdbcType=TIMESTAMP},
+		  </if>
+		  <if test="editor != null" >
+		    editor = #{editor,jdbcType=VARCHAR},
+		  </if>
+		  <if test="editTime != null" >
+		    edit_time = #{editTime,jdbcType=TIMESTAMP},
+		  </if>
+		  <if test="status != null" >
+		    status = #{status,jdbcType=VARCHAR},
+		  </if>
+		  <if test="remark != null" >
+		    remark = #{remark,jdbcType=VARCHAR},
+		  </if>
+		  <if test="permissionName != null" >
+		    permission_name = #{permissionName,jdbcType=VARCHAR},
+		  </if>
+		  <if test="permission != null" >
+		    permission = #{permission,jdbcType=VARCHAR},
+		  </if>
+		  <if test="menuId != null" >
+		    menu_id = #{menuId,jdbcType=BIGINT},
+		  </if>
+		</set>
+		where id = #{id,jdbcType=BIGINT}
+	</update>	  	
+	
+	<delete id="deleteById" parameterType="java.lang.Long" >
+		delete from boss_permission
+		where id = #{id,jdbcType=BIGINT}
+	</delete>
+
+	<select id="selectCount" resultType="Integer" parameterType="java.lang.Long" >
+		select count(1)
+		from boss_permission
+		<where>
+			<if test="permission != null and permission != ''">
+				and permission = #{permission}
+			</if>
+			<if test="id != null and id != ''">
+				and id != #{id}
+			</if>
+		</where>
+	</select>
+	
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+		select 
+		<include refid="Base_Column_List" />
+		from boss_permission
+		where id = #{id,jdbcType=BIGINT}
+	</select>
+	
+	<select id="selectList" resultMap="BaseResultMap" parameterType="Map" >
+		select 
+		<include refid="Base_Column_List" />
+		from boss_permission
+	</select> 		
+			
+	<!--查询用户权限-->
+	<select id="selectRolePermissionByOperatorId" parameterType="Long" resultMap="BaseResultMap">
+		SELECT bp.* FROM boss_permission bp
+		INNER JOIN boss_role_permission brp ON bp.id = brp.permission_id
+		INNER JOIN (
+			SELECT br.id FROM boss_role br
+			INNER JOIN boss_role_operator bro ON br.id = bro.role_id
+			INNER JOIN boss_operator bo ON bo.id = bro.operator_id
+			WHERE bo.id=#{operatorId}
+		) r ON r.id = brp.role_id
+	</select>
+	
+	<!--根据菜单ID查找权限-->
+	<select id="selectPermissionByMenuID" parameterType="Long" resultType="BossPermission">
+		SELECT 
+		<include refid="Base_Column_List"/>
+		FROM boss_permission
+		WHERE menu_id=#{menuId}
+	</select>
+	
+	<!-- 分页查询数据 -->
+	<select id="selectPageList" parameterType="Map" resultType="BossPermission">
+		SELECT 
+			<include refid="Base_Column_List"/>
+		FROM boss_permission
+		<where>
+			<if test="permissionName!=null">
+				permission_name like "%"#{permissionName}"%"
+			</if>
+			<if test="permission!=null">
+				AND permission like "%"#{permission}"%"
+			</if>
+			<if test="menuId!=null and menuId!=''">
+				AND FIND_IN_SET(menu_id,#{menuId})
+			</if>
+		</where>
+	</select>
+	
+	<!-- 查询所有权限数据 -->
+	<select id="selectAllPermis" parameterType="Map" resultType="BossPermission">
+		SELECT 
+		<include refid="Base_Column_List"/>
+		FROM boss_permission
+	</select>
+</mapper>

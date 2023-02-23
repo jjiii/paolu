@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Welcome</title>
+	</head> 
+	<body>
+		<h2>微信：(支付)</h2>
+		<div>
+			  <form action="http://localhost:8082/pay-geteway/trade/pay" method="post">
+			  		=============必填字段======================================<br />
+			  		
+			  		商户编号：	<input  name="merchant_app_code" value="1481083760950" /><br />
+			  		商户订单号：	<input  name="merchant_order_no" value="20160001" /><br />
+		          	商品名称：	<input  name="product_name" value="草你妹" style="width: 500px"/><br />
+		          	
+		          	金额：	  	<input  name="amount" value="0.1" /><br />
+		          	支付渠道：	<input  name="channel" value="alipay"><br />
+		          	秘钥：		<input  name="sign" value="sign"/><br />
+		          	
+		          	<br />
+		          	<br />
+		          	<br />
+		          	=============可选字段======================================<br />
+		          	<br />
+		          	返回结果地址：<input  name="return_url" value="www.xxx.com/sb" /><br />
+		          	通知地址：<input  name="notify_url" value="www.xxx.com/sb" /><br />
+		          	用户下单IP：<input  name="order_ip" value="192.168.22.12" /><br />
+		          	备注：<input  name="remark" value="亚麻跌" /><br />
+		          <p class="pay_btn">
+		            <input type="submit" value="立即支付" />
+		          </p>
+		        </form>
+		
+		</div>
+	</body>
+</html>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	
+
+	<classPathEntry
+		location="C:\Users\Administrator\.m2\repository\mysql\mysql-connector-java\5.1.27\mysql-connector-java-5.1.27.jar" />
+	
+		
+	<context id="mysqlTables" targetRuntime="MyBatis3">
+
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://192.168.3.84:3306/fc-pay" userId="alex"
+			password="123456">
+		</jdbcConnection>
+
+
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+
+
+
+		<!-- 生成模型包名和位置 -->
+		<javaModelGenerator targetPackage="com.fc.pay.trade.entity"
+			targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+			<property name="rootClass" value="com.fc.pay.common.core.entity.Entity"/>
+		</javaModelGenerator>
+
+		<!-- 生成映射文件的包名和位置 -->
+		<sqlMapGenerator targetPackage="com.fc.pay.trade.dao.impl"
+			targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<!-- 生成DAO的包名和位置 -->
+		<!-- <javaClientGenerator type="XMLMAPPER"
+			implementationPackage="com.fc.pay.notify.dao" targetPackage="com.fc.pay.trade.dao"
+			targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="rootInterface" value="com.fc.pay.common.core.dao.BaseDao"/>
+		</javaClientGenerator> -->
+		
+
+			
+		
+		<!-- <table tableName="admin"  enableCountByExample="false" 
+			enableDeleteByExample="false" enableSelectByExample="false"
+			enableUpdateByExample="false" selectByExampleQueryId="false">
+		</table>
+		<table tableName="admin_log"  enableCountByExample="false" 
+			enableDeleteByExample="false" enableSelectByExample="false"
+			enableUpdateByExample="false" selectByExampleQueryId="false">
+		</table>
+		
+		<table tableName="merchant"  enableCountByExample="false" 
+			enableDeleteByExample="false" enableSelectByExample="false"
+			enableUpdateByExample="false" selectByExampleQueryId="false">
+		</table> -->
+		
+		<!-- <table tableName="merchant_app"  enableCountByExample="false" 
+			enableDeleteByExample="false" enableSelectByExample="false"
+			enableUpdateByExample="false" selectByExampleQueryId="false">
+		</table> -->
+		
+		<table tableName="merchant_app_config"  enableCountByExample="false" 
+			enableDeleteByExample="false" enableSelectByExample="false"
+			enableUpdateByExample="false" selectByExampleQueryId="false">
+		</table>
+		
+		<!-- <table tableName="pay_payment_order"  enableCountByExample="false" 
+			enableDeleteByExample="false" enableSelectByExample="false"
+			enableUpdateByExample="false" selectByExampleQueryId="false">
+		</table>
+		-->
+		
+		<!-- <table tableName="pay_refund_order"  enableCountByExample="false" 
+			enableDeleteByExample="false" enableSelectByExample="false"
+			enableUpdateByExample="false" selectByExampleQueryId="false">
+		</table> 
+		
+		<table tableName="pay_trade_record"  enableCountByExample="false" 
+			enableDeleteByExample="false" enableSelectByExample="false"
+			enableUpdateByExample="false" selectByExampleQueryId="false">
+		</table>
+		-->
+		<!-- <table tableName="notify_record"  enableCountByExample="false" 
+			enableDeleteByExample="false" enableSelectByExample="false"
+			enableUpdateByExample="false" selectByExampleQueryId="false">
+		</table> -->
+		<!--<table tableName="notify_record_log"  enableCountByExample="false" 
+			enableDeleteByExample="false" enableSelectByExample="false"
+			enableUpdateByExample="false" selectByExampleQueryId="false">
+		</table>  -->
+		
+	</context>
+</generatorConfiguration>

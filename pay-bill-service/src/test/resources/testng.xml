@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="suite-pay-bill">
+  <test name="test-pay-bill">
+  	<!-- 
+  	<packages>
+  		<package name="com.fc.pay.bill.*" />
+  	</packages>
+  	 -->
+  	<classes>  	
+  		<!-- ******************************* service ******************************** -->
+  		<!-- <class name="com.fc.pay.bill.utils.BillUtilTest"></class> -->
+  		
+  		<!-- ******************************* service ******************************** -->
+  		<!-- 对账汇总服务 -->
+  		<!-- <class name="com.fc.pay.bill.service.BillBizSummaryServiceTest"></class> -->
+  		<!-- 对账文件通知服务 -->
+  		<!-- <class name="com.fc.pay.bill.service.BillBizFileNotifyServiceTest"></class> -->
+  		<!-- 对账批次服务 -->
+  		<!-- <class name="com.fc.pay.bill.service.BillBizBatchServiceTest"></class> -->
+  		<!-- 对账存疑服务 -->
+  		<!-- <class name="com.fc.pay.bill.service.BillBizDoubtServiceTest"></class> -->
+  		<!-- 对账差错服务 -->
+  		<!-- <class name="com.fc.pay.bill.service.BillBizMistakeServiceTest"></class> -->
+  		<!-- 对账明细服务 -->
+  		<!-- <class name="com.fc.pay.bill.service.BillBizItemServiceTest"></class> -->
+		<!-- 对账数据服务 -->
+  		<!-- <class name="com.fc.pay.bill.service.BillBizDataServiceTest"></class> -->
+  		<!-- 对账事务服务 -->
+  		<!-- <class name="com.fc.pay.bill.service.BillBizCheckTranxServiceTest"></class> -->
+  		
+  		<!-- ******************************* download ******************************* -->
+  		<!-- 支付宝账单下载 -->
+  		<!-- <class name="com.fc.pay.bill.download.AlipayDailyBillDownloadTest"></class> -->
+  		<!-- 支付宝账单解析-->
+  		<!-- <class name="com.fc.pay.bill.parser.AlipayDailyBillParserTest"></class> -->
+  		<!-- 银联账单下载 -->
+  		<!-- <class name="com.fc.pay.bill.download.UnionpayDailyBillDownloadTest"></class> -->
+  		
+  		<!-- ******************************* parser ******************************* -->
+  		<!-- 银联账单解析-->
+  		<!-- <class name="com.fc.pay.bill.parser.UnionpayDailyBillParserTest"></class> -->
+  		<!-- 微信账单下载 -->
+  		<!-- <class name="com.fc.pay.bill.download.WeixinDailyBillDownloadTest"></class> -->
+  		<!-- 微信账单解析 -->
+  		<!-- <class name="com.fc.pay.bill.parser.WeixinDailyBillParserTest"></class> -->
+  		
+  		<!-- ******************************* business ******************************* -->
+  		<!-- 本地数据业务 -->
+  		<!-- <class name="com.fc.pay.bill.business.LocalDataBusinessTest"></class> --> 
+  		<!-- 账单下载业务 -->
+  		<!-- <class name="com.fc.pay.bill.business.BillBizDownloadBusinessTest"></class> -->  
+  		<!-- 账单解析业务 -->
+  		<!-- <class name="com.fc.pay.bill.business.BillBizParserBusinessTest"></class> -->
+  		<!-- 对账存疑业务 -->
+  		<!-- <class name="com.fc.pay.bill.business.BillBizDoubtBusinessTest"></class> -->
+  		<!-- 对账文件业务 -->
+  		<!-- <class name="com.fc.pay.bill.business.BillBizFileBusinessTest"></class> -->
+  		<!-- 对账通知业务 -->
+  		<!-- <class name="com.fc.pay.bill.business.BillBizNotifyBusinessTest"></class> -->
+  		<!-- 对账批次业务 -->
+  		<!-- <class name="com.fc.pay.bill.business.BillBizCheckBatchBusinessTest"></class> -->
+  		<!-- 对账核心业务 -->
+  		<!-- <class name="com.fc.pay.bill.business.BillBizCheckCoreBusinessTest"></class> -->
+  	</classes>
+  </test>
+</suite>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	
+	<!-- 
+	<classPathEntry
+		location="C:\Users\Administrator\.m2\repository\mysql\mysql-connector-java\5.1.27\mysql-connector-java-5.1.27.jar" />
+ 	-->
+		
+	<context id="mysqlTables" targetRuntime="MyBatis3">
+
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost:3306/fc-pay" userId="root"
+			password="123456">
+		</jdbcConnection>
+
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!-- 生成模型包名和位置 -->
+		<javaModelGenerator targetPackage="com.fc.pay.bill.entity"
+			targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+			<property name="rootClass" value="com.fc.pay.common.core.entity.Entity"/>
+		</javaModelGenerator>
+		
+		<!-- 生成映射文件的包名和位置 -->
+		<sqlMapGenerator targetPackage="com.fc.pay.bill.dao.impl"
+			targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<!-- 生成DAO的包名和位置 -->
+		<javaClientGenerator type="XMLMAPPER"
+			implementationPackage="com.fc.pay.bill.dao" targetPackage="com.fc.pay.bill.dao"
+			targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+		
+		<!-- 
+		<table tableName="bill_biz_summary"  enableCountByExample="false" 
+			enableDeleteByExample="false" enableSelectByExample="false"
+			enableUpdateByExample="false" selectByExampleQueryId="false">
+		</table>
+		 -->
+		<!-- 		
+		<table tableName="bill_biz_batch"  enableCountByExample="false" 
+			enableDeleteByExample="false" enableSelectByExample="false"
+			enableUpdateByExample="false" selectByExampleQueryId="false">
+		</table>
+		 -->
+		<!-- 
+		<table tableName="bill_biz_doubt"  enableCountByExample="false" 
+			enableDeleteByExample="false" enableSelectByExample="false"
+			enableUpdateByExample="false" selectByExampleQueryId="false">
+		</table>		
+		<table tableName="bill_biz_mistake"  enableCountByExample="false" 
+			enableDeleteByExample="false" enableSelectByExample="false"
+			enableUpdateByExample="false" selectByExampleQueryId="false">
+		</table>
+		<table tableName="bill_biz_file_notify"  enableCountByExample="false" 
+			enableDeleteByExample="false" enableSelectByExample="false"
+			enableUpdateByExample="false" selectByExampleQueryId="false">
+		</table>		
+		-->
+		<table tableName="bill_biz_item"  enableCountByExample="false" 
+			enableDeleteByExample="false" enableSelectByExample="false"
+			enableUpdateByExample="false" selectByExampleQueryId="false">
+		</table>
+		
+	</context>
+</generatorConfiguration>

@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fc.pay.trade.dao.MerchantAppConfigMapper" >
+  <resultMap id="BaseResultMap" type="com.fc.pay.trade.entity.MerchantAppConfig" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="creater" property="creater" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="editor" property="editor" jdbcType="VARCHAR" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="version" property="version" jdbcType="INTEGER" />
+    <result column="merchant_code" property="merchantCode" jdbcType="VARCHAR" />
+    <result column="merchant_name" property="merchantName" jdbcType="VARCHAR" />
+    <result column="merchant_app_code" property="merchantAppCode" jdbcType="VARCHAR" />
+    <result column="merchant_app_name" property="merchantAppName" jdbcType="VARCHAR" />
+    <result column="channel" property="channel" jdbcType="VARCHAR" />
+    <result column="channel_app_id" property="channelAppId" jdbcType="VARCHAR" />
+    <result column="channel_merchant_id" property="channelMerchantId" jdbcType="VARCHAR" />
+    <result column="cert_path" property="certPath" jdbcType="VARCHAR" />
+    <result column="cert_pwd" property="certPwd" jdbcType="VARCHAR" />
+    <result column="cert_validate" property="certValidate" jdbcType="VARCHAR" />
+    <result column="sub_mch_id" property="subMchId" jdbcType="VARCHAR" />
+    <result column="pri_key" property="priKey" jdbcType="VARCHAR" />
+    <result column="pub_key" property="pubKey" jdbcType="VARCHAR" />
+    <result column="cert_enc_path" property="certEncPath" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="app_secret" property="appSecret" jdbcType="VARCHAR" />
+    <result column="partner_id" property="partnerId" jdbcType="VARCHAR" />
+    <result column="pay_key" property="payKey" jdbcType="VARCHAR" />
+    <result column="pay_way" property="payWay" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, creater, create_time, editor, edit_time, version, merchant_code, merchant_name, 
+    merchant_app_code, merchant_app_name, channel, channel_app_id, channel_merchant_id, 
+    cert_path, cert_pwd, cert_validate, sub_mch_id, pri_key, pub_key, cert_enc_path, 
+    status, app_secret, partner_id, pay_key, pay_way
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from merchant_app_config
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from merchant_app_config
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.fc.pay.trade.entity.MerchantAppConfig" >
+    insert into merchant_app_config (id, creater, create_time, 
+      editor, edit_time, version, 
+      merchant_code, merchant_name, merchant_app_code, 
+      merchant_app_name, channel, channel_app_id, 
+      channel_merchant_id, cert_path, cert_pwd, 
+      cert_validate, sub_mch_id, pri_key, 
+      pub_key, cert_enc_path, status, 
+      app_secret, partner_id, pay_key, pay_way)
+    values (#{id,jdbcType=BIGINT}, #{creater,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{editor,jdbcType=VARCHAR}, #{editTime,jdbcType=TIMESTAMP}, #{version,jdbcType=INTEGER}, 
+      #{merchantCode,jdbcType=VARCHAR}, #{merchantName,jdbcType=VARCHAR}, #{merchantAppCode,jdbcType=VARCHAR}, 
+      #{merchantAppName,jdbcType=VARCHAR}, #{channel,jdbcType=VARCHAR}, #{channelAppId,jdbcType=VARCHAR}, 
+      #{channelMerchantId,jdbcType=VARCHAR}, #{certPath,jdbcType=VARCHAR}, #{certPwd,jdbcType=VARCHAR}, 
+      #{certValidate,jdbcType=VARCHAR}, #{subMchId,jdbcType=VARCHAR}, #{priKey,jdbcType=VARCHAR}, 
+      #{pubKey,jdbcType=VARCHAR}, #{certEncPath,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{appSecret,jdbcType=VARCHAR}, #{partnerId,jdbcType=VARCHAR}, #{payKey,jdbcType=VARCHAR}, #{payWay,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fc.pay.trade.entity.MerchantAppConfig" >
+    insert into merchant_app_config
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="creater != null" >
+        creater,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="editor != null" >
+        editor,
+      </if>
+      <if test="editTime != null" >
+        edit_time,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+      <if test="merchantCode != null" >
+        merchant_code,
+      </if>
+      <if test="merchantName != null" >
+        merchant_name,
+      </if>
+      <if test="merchantAppCode != null" >
+        merchant_app_code,
+      </if>
+      <if test="merchantAppName != null" >
+        merchant_app_name,
+      </if>
+      <if test="channel != null" >
+        channel,
+      </if>
+      <if test="channelAppId != null" >
+        channel_app_id,
+      </if>
+      <if test="channelMerchantId != null" >
+        channel_merchant_id,
+      </if>
+      <if test="certPath != null" >
+        cert_path,
+      </if>
+      <if test="certPwd != null" >
+        cert_pwd,
+      </if>
+      <if test="certValidate != null" >
+        cert_validate,
+      </if>
+      <if test="subMchId != null" >
+        sub_mch_id,
+      </if>
+      <if test="priKey != null" >
+        pri_key,
+      </if>
+      <if test="pubKey != null" >
+        pub_key,
+      </if>
+      <if test="certEncPath != null" >
+        cert_enc_path,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="appSecret != null" >
+        app_secret,
+      </if>
+      <if test="partnerId != null" >
+        partner_id,
+      </if>
+      <if test="payKey != null" >
+        pay_key,
+      </if>
+      <if test="payWay != null" >
+        pay_way,
+      </if>
+    </trim>
+    
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="creater != null" >
+        #{creater,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="editor != null" >
+        #{editor,jdbcType=VARCHAR},
+      </if>
+      <if test="editTime != null" >
+        #{editTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="merchantCode != null" >
+        #{merchantCode,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantName != null" >
+        #{merchantName,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantAppCode != null" >
+        #{merchantAppCode,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantAppName != null" >
+        #{merchantAppName,jdbcType=VARCHAR},
+      </if>
+      <if test="channel != null" >
+        #{channel,jdbcType=VARCHAR},
+      </if>
+      <if test="channelAppId != null" >
+        #{channelAppId,jdbcType=VARCHAR},
+      </if>
+      <if test="channelMerchantId != null" >
+        #{channelMerchantId,jdbcType=VARCHAR},
+      </if>
+      <if test="certPath != null" >
+        #{certPath,jdbcType=VARCHAR},
+      </if>
+      <if test="certPwd != null" >
+        #{certPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="certValidate != null" >
+        #{certValidate,jdbcType=VARCHAR},
+      </if>
+      <if test="subMchId != null" >
+        #{subMchId,jdbcType=VARCHAR},
+      </if>
+      <if test="priKey != null" >
+        #{priKey,jdbcType=VARCHAR},
+      </if>
+      <if test="pubKey != null" >
+        #{pubKey,jdbcType=VARCHAR},
+      </if>
+      <if test="certEncPath != null" >
+        #{certEncPath,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="appSecret != null" >
+        #{appSecret,jdbcType=VARCHAR},
+      </if>
+      <if test="partnerId != null" >
+        #{partnerId,jdbcType=VARCHAR},
+      </if>
+      <if test="payKey != null" >
+        #{payKey,jdbcType=VARCHAR},
+      </if>
+      <if test="payWay != null" >
+        #{payWay,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fc.pay.trade.entity.MerchantAppConfig" >
+    update merchant_app_config
+    <set >
+      <if test="creater != null" >
+        creater = #{creater,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="editor != null" >
+        editor = #{editor,jdbcType=VARCHAR},
+      </if>
+      <if test="editTime != null" >
+        edit_time = #{editTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null" >
+        version = #{version,jdbcType=INTEGER},
+      </if>
+      <if test="merchantCode != null" >
+        merchant_code = #{merchantCode,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantName != null" >
+        merchant_name = #{merchantName,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantAppCode != null" >
+        merchant_app_code = #{merchantAppCode,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantAppName != null" >
+        merchant_app_name = #{merchantAppName,jdbcType=VARCHAR},
+      </if>
+      <if test="channel != null" >
+        channel = #{channel,jdbcType=VARCHAR},
+      </if>
+      <if test="channelAppId != null" >
+        channel_app_id = #{channelAppId,jdbcType=VARCHAR},
+      </if>
+      <if test="channelMerchantId != null" >
+        channel_merchant_id = #{channelMerchantId,jdbcType=VARCHAR},
+      </if>
+      <if test="certPath != null" >
+        cert_path = #{certPath,jdbcType=VARCHAR},
+      </if>
+      <if test="certPwd != null" >
+        cert_pwd = #{certPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="certValidate != null" >
+        cert_validate = #{certValidate,jdbcType=VARCHAR},
+      </if>
+      <if test="subMchId != null" >
+        sub_mch_id = #{subMchId,jdbcType=VARCHAR},
+      </if>
+      <if test="priKey != null" >
+        pri_key = #{priKey,jdbcType=VARCHAR},
+      </if>
+      <if test="pubKey != null" >
+        pub_key = #{pubKey,jdbcType=VARCHAR},
+      </if>
+      <if test="certEncPath != null" >
+        cert_enc_path = #{certEncPath,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="appSecret != null" >
+        app_secret = #{appSecret,jdbcType=VARCHAR},
+      </if>
+      <if test="partnerId != null" >
+        partner_id = #{partnerId,jdbcType=VARCHAR},
+      </if>
+      <if test="payKey != null" >
+        pay_key = #{payKey,jdbcType=VARCHAR},
+      </if>
+      <if test="payWay != null" >
+        pay_way = #{payWay,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fc.pay.trade.entity.MerchantAppConfig" >
+    update merchant_app_config
+    set creater = #{creater,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      editor = #{editor,jdbcType=VARCHAR},
+      edit_time = #{editTime,jdbcType=TIMESTAMP},
+      version = #{version,jdbcType=INTEGER},
+      merchant_code = #{merchantCode,jdbcType=VARCHAR},
+      merchant_name = #{merchantName,jdbcType=VARCHAR},
+      merchant_app_code = #{merchantAppCode,jdbcType=VARCHAR},
+      merchant_app_name = #{merchantAppName,jdbcType=VARCHAR},
+      channel = #{channel,jdbcType=VARCHAR},
+      channel_app_id = #{channelAppId,jdbcType=VARCHAR},
+      channel_merchant_id = #{channelMerchantId,jdbcType=VARCHAR},
+      cert_path = #{certPath,jdbcType=VARCHAR},
+      cert_pwd = #{certPwd,jdbcType=VARCHAR},
+      cert_validate = #{certValidate,jdbcType=VARCHAR},
+      sub_mch_id = #{subMchId,jdbcType=VARCHAR},
+      pri_key = #{priKey,jdbcType=VARCHAR},
+      pub_key = #{pubKey,jdbcType=VARCHAR},
+      cert_enc_path = #{certEncPath,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      app_secret = #{appSecret,jdbcType=VARCHAR},
+      partner_id = #{partnerId,jdbcType=VARCHAR},
+      pay_key = #{payKey,jdbcType=VARCHAR},
+      pay_way = #{payWay,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  
+  
+  <sql id="condition_sql">
+		<if test="merchant_app_code != null"> and merchant_app_code = #{merchant_app_code,jdbcType=VARCHAR}</if>
+		<if test="channel_app_id != null"> and channel_app_id = #{channel_app_id,jdbcType=VARCHAR}</if>
+		<if test="channel != null"> and channel = #{channel,jdbcType=VARCHAR}</if>
+		<if test="status != null"> and status = #{status,jdbcType=VARCHAR}</if>
+		<if test="channelMerchantId != null"> and channel_merchant_id = #{channelMerchantId,jdbcType=VARCHAR}</if>
+		<if test="pay_way != null"> and pay_way = #{pay_way,jdbcType=VARCHAR}</if>
+  </sql>
+  <select id="selectByMap" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from merchant_app_config
+    <where>
+			<include refid="condition_sql" />
+	</where>
+  </select>
+</mapper>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+    
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Welcome</title>
+	</head> 
+	<body>
+		<h2>银联：(退款)</h2>
+		<div>
+		
+			 <!-- <form action="http://localhost:8082/pay-gateway/trade/refund" method="post"> -->
+			 <!-- <form action="http://test.carisok.com/pay-web-gateway/trade/refund" method="post"> -->
+			 <form id="queryForm" action="http://test.carisok.com/pay-web-shop/mch/pay/createRefund" method="post">
+			  		=============必填字段======================================<br />
+			  		商户编号：	<input  name="merchantAppCode" value="1481083760950" /><br />
+			  		商户退款编号：	<input  name="refundMerchantNo" value="0001" /><br />
+			  		支付渠道：		<input  name="channel" value="unionpay"><br />
+			  		退款金额：		<input  name="refundAmount" value="0.10" /><br />
+			  					
+		          	原支枫车订单号：	<input  name="orderNo" value="20160001"/><br />
+		          	秘钥：		<input  name="sign" value="sign"/><br />
+		          	退款原因：<input  name="refundReason" value="想退就退，不行么？" /><br />
+		          	<br />
+		          	<br />
+		          	<br />
+		          	=============可选字段======================================<br />
+		          	<br />
+		         
+		          	
+		          <p class="pay_btn">
+		            <input type="submit" value="退款" />
+		          </p>
+		        </form>
+		</div>
+	</body>
+</html>

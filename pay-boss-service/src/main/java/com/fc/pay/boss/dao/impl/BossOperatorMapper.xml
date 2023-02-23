@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fc.pay.boss.dao.BossOperatorMapper">
+  <resultMap id="BaseResultMap" type="com.fc.pay.boss.entity.BossOperator" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="version" property="version" jdbcType="BIGINT" />
+    <result column="creater" property="creater" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="editor" property="editor" jdbcType="VARCHAR" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="real_name" property="realName" jdbcType="VARCHAR" />
+    <result column="mobile_no" property="mobileNo" jdbcType="VARCHAR" />
+    <result column="login_name" property="loginName" jdbcType="VARCHAR" />
+    <result column="login_pwd" property="loginPwd" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="salt" property="salt" jdbcType="VARCHAR" />
+  </resultMap>
+
+   <!-- 通用查询结果列-->
+   <sql id="Base_Column_List">
+	   id, version, creater, create_time AS createTime, editor, edit_time AS editTime, status, remark, real_name AS realName,
+	   mobile_no AS mobileNo, login_name AS loginName, login_pwd AS loginPwd,type,salt
+   </sql>
+    
+  <insert id="insertSelective" parameterType="BossOperator" useGeneratedKeys="true" keyProperty="id">
+    insert into boss_operator
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+      <if test="creater != null" >
+        creater,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="editor != null" >
+        editor,
+      </if>
+      <if test="editTime != null" >
+        edit_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="realName != null" >
+        real_name,
+      </if>
+      <if test="mobileNo != null" >
+        mobile_no,
+      </if>
+      <if test="loginName != null" >
+        login_name,
+      </if>
+      <if test="loginPwd != null" >
+        login_pwd,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="salt != null" >
+        salt,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=BIGINT},
+      </if>
+      <if test="creater != null" >
+        #{creater,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="editor != null" >
+        #{editor,jdbcType=VARCHAR},
+      </if>
+      <if test="editTime != null" >
+        #{editTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null" >
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileNo != null" >
+        #{mobileNo,jdbcType=VARCHAR},
+      </if>
+      <if test="loginName != null" >
+        #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="loginPwd != null" >
+        #{loginPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="salt != null" >
+        #{salt,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateSelectiveById" parameterType="BossOperator" >
+    update boss_operator
+    <set >
+      <if test="version != null and version != ''" >
+        version = #{version,jdbcType=BIGINT},
+      </if>
+      <if test="creater != null and creater != ''" >
+        creater = #{creater,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null and createTime != ''" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="editor != null and editor != ''" >
+        editor = #{editor,jdbcType=VARCHAR},
+      </if>
+      <if test="editTime != null and editTime != ''" >
+        edit_time = #{editTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null and status != ''" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null and remark != ''" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null and realName != ''" >
+        real_name = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileNo != null and mobileNo != ''" >
+        mobile_no = #{mobileNo,jdbcType=VARCHAR},
+      </if>
+      <if test="loginName != null and loginName != ''" >
+        login_name = #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test=" loginPwd != null and loginPwd != '' " >
+        login_pwd = #{loginPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null and type != ''" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="salt != null and salt != ''" >
+        salt = #{salt,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <delete id="deleteById" parameterType="java.lang.Long" >
+    delete from boss_operator
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  
+  <select id="selectCount" resultType="Integer" parameterType="java.lang.Long" >
+	select count(1)
+	from boss_operator
+	<where>
+		<if test="loginName != null and loginName != ''">
+			and login_name = #{loginName}
+		</if>
+	</where>
+  </select>
+  
+  <select id="selectByName" resultMap="BaseResultMap" parameterType="String">
+  	select 
+    <include refid="Base_Column_List" />
+    from boss_operator
+    where login_name = #{loginName}
+  </select>
+  
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from boss_operator
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  
+  <!-- 分页查询数据 -->
+  <select id="selectPageList" parameterType="Map" resultMap="BaseResultMap">
+	  SELECT 
+		  <include refid="Base_Column_List"/>
+	  FROM boss_operator
+	  <where>
+		  <if test="loginName!=null and loginName!=''">
+			  login_name like "%"#{loginName}"%"
+		  </if>
+		  <if test=" realName!=null and realName!=''">
+			  AND real_name like "%"#{realName}"%"
+		  </if>
+		  <if test=" mobileNo!=null and mobileNo!='' ">
+			  AND mobile_no like "%"#{mobileNo}"%"
+		  </if>
+		  <if test=" status!=null and status!='' ">
+			  AND status = #{status}
+		  </if>
+	  </where>
+  </select>  
+  
+  <!-- 根据角色查询用户 -->
+  <select id="selectOperatorByRoleId" parameterType="Long" resultType="BossOperator">
+	SELECT
+	<include refid="Base_Column_List"/> 
+	FROM boss_operator bo WHERE id IN(
+		SELECT operator_id FROM boss_role_operator 
+		WHERE role_id = (SELECT id FROM boss_role WHERE id=#{roleId})
+	)
+  </select>
+
+</mapper>

@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fc.pay.trade.dao.MerchantAppMapper" >
+
+  <resultMap id="BaseResultMap" type="com.fc.pay.trade.entity.MerchantApp" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="creater" property="creater" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="editor" property="editor" jdbcType="VARCHAR" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="version" property="version" jdbcType="INTEGER" />
+    <result column="merchant_code" property="merchantCode" jdbcType="VARCHAR" />
+    <result column="merchant_name" property="merchantName" jdbcType="VARCHAR" />
+    <result column="merchant_app_code" property="merchantAppCode" jdbcType="VARCHAR" />
+    <result column="merchant_app_name" property="merchantAppName" jdbcType="VARCHAR" />
+    <result column="pri_key" property="priKey" jdbcType="VARCHAR" />
+    <result column="pub_key" property="pubKey" jdbcType="VARCHAR" />
+    <result column="mct_pub_key" property="mctPubKey" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="download_notify_url" property="downloadNotifyUrl" jdbcType="VARCHAR" />
+    <result column="handle_mistake_notify_url" property="handleMistakeNotifyUrl" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    id, creater, create_time, editor, edit_time, version, merchant_code, merchant_name, 
+    merchant_app_code, merchant_app_name, pri_key, pub_key,mct_pub_key, status, download_notify_url, 
+    handle_mistake_notify_url
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from merchant_app
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from merchant_app
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.fc.pay.trade.entity.MerchantApp" >
+    insert into merchant_app (id, creater, create_time, 
+      editor, edit_time, version, 
+      merchant_code, merchant_name, merchant_app_code, 
+      merchant_app_name, pri_key, pub_key, mct_pub_key,
+      status, download_notify_url, handle_mistake_notify_url
+      )
+    values (#{id,jdbcType=BIGINT}, #{creater,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{editor,jdbcType=VARCHAR}, #{editTime,jdbcType=TIMESTAMP}, #{version,jdbcType=INTEGER}, 
+      #{merchantCode,jdbcType=VARCHAR}, #{merchantName,jdbcType=VARCHAR}, #{merchantAppCode,jdbcType=VARCHAR}, 
+      #{merchantAppName,jdbcType=VARCHAR}, #{priKey,jdbcType=VARCHAR}, #{pubKey,jdbcType=VARCHAR}, #{mctPubKey,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{downloadNotifyUrl,jdbcType=VARCHAR}, #{handleMistakeNotifyUrl,jdbcType=VARCHAR}
+      )
+  </insert>
+  
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id" parameterType="com.fc.pay.trade.entity.MerchantApp" >
+    insert into merchant_app
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="creater != null" >
+        creater,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="editor != null" >
+        editor,
+      </if>
+      <if test="editTime != null" >
+        edit_time,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+      <if test="merchantCode != null" >
+        merchant_code,
+      </if>
+      <if test="merchantName != null" >
+        merchant_name,
+      </if>
+      <if test="merchantAppCode != null" >
+        merchant_app_code,
+      </if>
+      <if test="merchantAppName != null" >
+        merchant_app_name,
+      </if>
+      <if test="priKey != null" >
+        pri_key,
+      </if>
+      <if test="pubKey != null" >
+        pub_key,
+      </if>
+      <if test="mctPubKey != null" >
+        mct_pub_key,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="downloadNotifyUrl != null" >
+        download_notify_url,
+      </if>
+      <if test="handleMistakeNotifyUrl != null" >
+        handle_mistake_notify_url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="creater != null" >
+        #{creater,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="editor != null" >
+        #{editor,jdbcType=VARCHAR},
+      </if>
+      <if test="editTime != null" >
+        #{editTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="merchantCode != null" >
+        #{merchantCode,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantName != null" >
+        #{merchantName,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantAppCode != null" >
+        #{merchantAppCode,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantAppName != null" >
+        #{merchantAppName,jdbcType=VARCHAR},
+      </if>
+      <if test="priKey != null" >
+        #{priKey,jdbcType=VARCHAR},
+      </if>
+      <if test="pubKey != null" >
+        #{pubKey,jdbcType=VARCHAR},
+      </if>
+      <if test="mctPubKey != null" >
+        #{mctPubKey,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="downloadNotifyUrl != null" >
+        #{downloadNotifyUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="handleMistakeNotifyUrl != null" >
+        #{handleMistakeNotifyUrl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fc.pay.trade.entity.MerchantApp" >
+    update merchant_app
+    <set >
+      <if test="creater != null" >
+        creater = #{creater,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="editor != null" >
+        editor = #{editor,jdbcType=VARCHAR},
+      </if>
+      <if test="editTime != null" >
+        edit_time = #{editTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null" >
+        version = #{version,jdbcType=INTEGER},
+      </if>
+      <if test="merchantCode != null" >
+        merchant_code = #{merchantCode,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantName != null" >
+        merchant_name = #{merchantName,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantAppCode != null" >
+        merchant_app_code = #{merchantAppCode,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantAppName != null" >
+        merchant_app_name = #{merchantAppName,jdbcType=VARCHAR},
+      </if>
+      <if test="priKey != null" >
+        pri_key = #{priKey,jdbcType=VARCHAR},
+      </if>
+      <if test="pubKey != null" >
+        pub_key = #{pubKey,jdbcType=VARCHAR},
+      </if>
+      <if test="mctPubKey != null" >
+        mct_pub_key = #{mctPubKey,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="downloadNotifyUrl != null" >
+        download_notify_url = #{downloadNotifyUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="handleMistakeNotifyUrl != null" >
+        handle_mistake_notify_url = #{handleMistakeNotifyUrl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fc.pay.trade.entity.MerchantApp" >
+    update merchant_app
+    set creater = #{creater,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      editor = #{editor,jdbcType=VARCHAR},
+      edit_time = #{editTime,jdbcType=TIMESTAMP},
+      version = #{version,jdbcType=INTEGER},
+      merchant_code = #{merchantCode,jdbcType=VARCHAR},
+      merchant_name = #{merchantName,jdbcType=VARCHAR},
+      merchant_app_code = #{merchantAppCode,jdbcType=VARCHAR},
+      merchant_app_name = #{merchantAppName,jdbcType=VARCHAR},
+      pri_key = #{priKey,jdbcType=VARCHAR},
+      pub_key = #{pubKey,jdbcType=VARCHAR},
+      mct_pub_key = #{mctPubKey,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      download_notify_url = #{downloadNotifyUrl,jdbcType=VARCHAR},
+      handle_mistake_notify_url = #{handleMistakeNotifyUrl,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  
+  <sql id="condition_sql">
+		<if test="merchant_app_code != null">and merchant_app_code = #{merchant_app_code,jdbcType=VARCHAR}</if>
+		<if test="merchant_code != null">and merchant_code = #{merchant_code,jdbcType=VARCHAR}</if>
+		<if test="status != null"> and status = #{status,jdbcType=VARCHAR}</if>
+		<if test="channel != null"> and channel = #{channel,jdbcType=VARCHAR}</if>
+  </sql>
+  <select id="selectByMap" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from merchant_app
+    <where>
+			<include refid="condition_sql" />
+	</where>
+  </select>
+  
+  <!-- 获取最大商户编码 -->
+  <select id="selectMaxCode" resultType="String">
+  	SELECT MAX(merchant_app_code) FROM merchant_app
+  </select>
+  
+  <!-- 查看指定编码的记录是否存在 -->
+  <select id="selectCountCode" parameterType="String" resultType="Integer">
+  	SELECT COUNT(1) FROM merchant_app WHERE merchant_app_code = #{merchantAppCode}
+  </select> 
+  
+  <!-- 查询商户应用名称与编码 -->
+  <select id="selectMerchantApp" resultType="com.fc.pay.trade.entity.MerchantApp">
+  	select merchant_app_code merchantAppCode,merchant_app_name merchantAppName from merchant_app
+  </select> 
+  
+</mapper>

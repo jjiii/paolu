@@ -1,0 +1,588 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+
+	<groupId>com.fc</groupId>
+	<artifactId>pay</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	
+	
+	<repositories>
+			<repository>
+				<id>nexus</id>
+				<name>local private nexus</name>
+				<url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+				<releases>
+					<enabled>true</enabled>
+				</releases>
+				<snapshots>
+					<enabled>false</enabled>
+				</snapshots>
+			</repository>
+		</repositories>
+	
+		<pluginRepositories>
+			<pluginRepository>
+				<id>nexus</id>
+				<name>local private nexus</name>
+				<url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+				<releases>
+					<enabled>true</enabled>
+				</releases>
+				<snapshots>
+					<enabled>false</enabled>
+				</snapshots>
+			</pluginRepository>
+		</pluginRepositories>
+	
+	
+	
+	
+	<properties>
+		<org.springframework-version>4.3.4.RELEASE</org.springframework-version>
+	</properties>
+
+	<modules>
+		<module>pay-common</module>
+		<module>pay-notify</module>
+		<module>pay-web-boss</module>
+		<module>pay-web-gateway</module>
+		<module>pay-web-shop</module>
+		<module>pay-trade-service</module>
+		<module>pay-bill-service</module>
+		<!-- <module>pay-bill-job</module> -->
+		<module>pay-boss-service</module>
+		<module>pay-web-bill</module>
+	</modules>
+	
+
+	<dependencyManagement>
+		<dependencies>
+
+			<!-- servlet3.1 -->
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>javax.servlet-api</artifactId>
+				<version>3.1.0</version>
+			</dependency>
+			<dependency>
+				<groupId>jstl</groupId>
+				<artifactId>jstl</artifactId>
+				<version>1.2</version>
+			</dependency>
+
+			<!-- spring -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-framework-bom</artifactId>
+				<version>${org.springframework-version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+				<version>${org.springframework-version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>commons-logging</groupId>
+						<artifactId>commons-logging</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context-support</artifactId>
+				<version>${org.springframework-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-webmvc</artifactId>
+				<version>${org.springframework-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-jdbc</artifactId>
+				<version>${org.springframework-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-aop</artifactId>
+				<version>${org.springframework-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-jms</artifactId>
+				<version>${org.springframework-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-test</artifactId>
+				<version>${org.springframework-version}</version>
+			</dependency>
+			<!-- spring AOP 需要加入的包 -->
+			<dependency>
+				<groupId>org.aspectj</groupId>
+				<artifactId>aspectjweaver</artifactId>
+				<version>1.8.7</version>
+			</dependency>
+
+			<!-- dubbo -->
+			<!-- <dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>dubbo</artifactId>
+				<version>2.5.3</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			-->
+			
+			<!-- zookeeper -->
+			<!-- <dependency>
+				<groupId>org.apache.zookeeper</groupId>
+				<artifactId>zookeeper</artifactId>
+				<version>3.4.8</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.slf4j</groupId>
+						<artifactId>slf4j-log4j12</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>com.github.sgroschupf</groupId>
+				<artifactId>zkclient</artifactId>
+				<version>0.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.curator</groupId>
+				<artifactId>curator-recipes</artifactId>
+				<version>2.10.0</version>
+			</dependency>
+			-->
+
+
+			<!-- slf4j+logbakc -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>jcl-over-slf4j</artifactId>
+				<version>1.7.18</version>
+			</dependency>
+
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-classic</artifactId>
+				<version>1.1.3</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>com.fc.log</groupId>
+				<artifactId>log-client</artifactId>
+				<version>1.0.10.release</version>
+				<!--<version>1.0.8.release</version>-->
+			</dependency>
+
+			<!-- redis客户端 -->
+			<dependency>
+				<groupId>org.springframework.data</groupId>
+				<artifactId>spring-data-redis</artifactId>
+				<version>1.4.1.RELEASE</version>
+			</dependency>
+
+			<dependency>
+				<groupId>redis.clients</groupId>
+				<artifactId>jedis</artifactId>
+				<version>2.6.0</version>
+			</dependency>
+			
+			<!-- jackson -->
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>2.6.3</version>
+			</dependency>
+
+			<!-- oracal(sum)对json的标准 -->
+			<dependency>
+				<groupId>javax.json</groupId>
+				<artifactId>javax.json-api</artifactId>
+				<version>1.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.glassfish</groupId>
+				<artifactId>javax.json</artifactId>
+				<version>1.0.3</version>
+			</dependency>
+
+			<!-- gson -->
+			<dependency>
+				<groupId>com.google.code.gson</groupId>
+				<artifactId>gson</artifactId>
+				<version>2.3</version>
+			</dependency>
+
+			<!-- hibernate对jsr303支持（bean验证） -->
+			<!-- <dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-validator</artifactId>
+				<version>5.0.3.Final</version>
+			</dependency>
+			-->
+			<!-- freemarker -->
+			<dependency>
+				<groupId>org.freemarker</groupId>
+				<artifactId>freemarker</artifactId>
+				<version>2.3.23</version>
+			</dependency>
+
+			<!-- mybatis -->
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis</artifactId>
+				<version>3.2.7</version>
+			</dependency>
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis-spring</artifactId>
+				<version>1.2.2</version>
+			</dependency>
+			<dependency>
+				<groupId>org.mybatis.generator</groupId>
+				<artifactId>mybatis-generator-maven-plugin</artifactId>
+				<version>1.3.2</version>
+			</dependency>
+
+			<!-- jetty容器 -->
+			<dependency>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-webapp</artifactId>
+				<version>9.3.0.v20150612</version>
+			</dependency>
+			<!-- 不记得这个jetty包是用来做啥的了 -->
+			<dependency>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>jetty</artifactId>
+				<version>6.1.26</version>
+			</dependency>
+
+
+			<!-- 阿里巴巴连接池 -->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>druid</artifactId>
+				<version>1.0.7</version>
+			</dependency>
+
+			<!-- 数据库驱动 -->
+			<!-- mysql driver -->
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>5.1.27</version>
+			</dependency>
+
+			<!-- junit -->
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.12</version>
+			</dependency>
+
+
+			<!-- appache utile -->
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>2.4</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-codec</groupId>
+				<artifactId>commons-codec</artifactId>
+				<version>1.10</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-collections</groupId>
+				<artifactId>commons-collections</artifactId>
+				<version>3.2.2</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-lang</groupId>
+				<artifactId>commons-lang</artifactId>
+				<version>2.6</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-beanutils</groupId>
+				<artifactId>commons-beanutils</artifactId>
+				<version>1.9.2</version>
+			</dependency>
+			<dependency>
+			    <groupId>org.apache.commons</groupId>
+			    <artifactId>commons-compress</artifactId>
+			    <version>1.12</version>
+			</dependency>
+			<dependency>
+			    <groupId>org.apache.commons</groupId>
+			    <artifactId>commons-csv</artifactId>
+			    <version>1.4</version>
+			</dependency>	
+
+			
+			<!-- 发送http请求 -->
+			<dependency>
+				<groupId>com.jcabi</groupId>
+				<artifactId>jcabi-http</artifactId>
+				<version>1.16</version>
+			</dependency>
+			<!-- 发送http请求 地址是域名时需要此依赖 -->
+			<dependency>
+				<groupId>javax.ws.rs</groupId>
+				<artifactId>javax.ws.rs-api</artifactId>
+				<version>2.0.1</version>
+			</dependency>
+
+			<!-- excel -->
+			<dependency>
+				<groupId>org.apache.poi</groupId>
+				<artifactId>poi</artifactId>
+				<version>3.13</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.poi</groupId>
+				<artifactId>poi-ooxml</artifactId>
+				<version>3.13</version>
+			</dependency>
+
+			<!-- shiro和spring整合 -->
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-core</artifactId>
+				<version>1.2.3</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-spring</artifactId>
+				<version>1.2.3</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-ehcache</artifactId>
+				<version>1.2.5</version>
+			</dependency>
+
+
+			<!-- <dependency> <groupId>com.squareup.okhttp</groupId> <artifactId>okhttp</artifactId> 
+				<version>2.6.0</version> </dependency> -->
+
+			<!-- 解析html，像jquery一样调用 -->
+			<dependency>
+				<groupId>com.sun.jersey</groupId>
+				<artifactId>jersey-client</artifactId>
+				<version>1.19</version>
+			</dependency>
+			<dependency>
+				<groupId>org.glassfish.jersey.core</groupId>
+				<artifactId>jersey-client</artifactId>
+				<version>2.22.1</version>
+			</dependency>
+			
+			<!-- 定时任务 -->
+			<dependency>
+				<groupId>org.quartz-scheduler</groupId>
+				<artifactId>quartz</artifactId>
+				<version>2.1.7</version>
+			</dependency>
+			
+
+			<!-- 接口管理swagger2 -->
+			<!-- <dependency> <groupId>io.springfox</groupId> <artifactId>springfox-swagger2</artifactId> 
+				<version>2.4.0</version> </dependency> <dependency> <groupId>io.springfox</groupId> 
+				<artifactId>springfox-swagger-ui</artifactId> <version>2.4.0</version> </dependency> -->
+
+			<dependency>
+				<groupId>org.apache.activemq</groupId>
+				<artifactId>activemq-core</artifactId>
+				<version>5.7.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.activemq</groupId>
+				<artifactId>activemq-pool</artifactId>
+				<version>5.14.1</version>
+			</dependency>
+			
+			
+			<!-- 支付宝api -->
+			<dependency>
+				<groupId>alipay</groupId>
+				<artifactId>alipay-sdk-java20161111151940</artifactId>
+				<version>1.0</version>
+			</dependency>
+			
+			<!-- 支付宝给的demo -->
+			<dependency>
+				<groupId>alipay</groupId>
+				<artifactId>alipay-trade-sdk</artifactId>
+				<version>1.0</version>
+			</dependency>
+			
+			<!-- 银联SDK -->
+			<dependency>
+				  <groupId>com.unionpay</groupId>
+				  <artifactId>unionpay-acp-sdk-20161124</artifactId>
+				  <version>1.0</version>
+			</dependency>
+			<!-- 腾讯微信 -->
+			<dependency>
+				  <groupId>com.tencent</groupId>
+				  <artifactId>wxpay-scanpay-java-sdk</artifactId>
+				  <version>1.0</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>com.baomidou</groupId>
+				<artifactId>mybatis-plus</artifactId>
+				<version>1.4.8</version>
+			</dependency>
+			
+			<!-- xml -->
+			<dependency>
+		        <groupId>xmlpull</groupId>
+		        <artifactId>xmlpull</artifactId>
+		        <version>1.1.3.1</version>
+		    </dependency>
+		    <dependency>
+		        <groupId>xpp3</groupId>
+		        <artifactId>xpp3</artifactId>
+		        <version>1.1.4c</version>
+		    </dependency>
+		    <dependency>
+		        <groupId>com.thoughtworks.xstream</groupId>
+		        <artifactId>xstream</artifactId>
+		        <version>1.4.7</version>
+		    </dependency>
+		    
+		    <!--apache http-->
+			<dependency>
+		        <groupId>org.apache.httpcomponents</groupId>
+		        <artifactId>fluent-hc</artifactId>
+		        <version>4.5.2</version>
+		    </dependency>
+		    <dependency>
+		        <groupId>org.apache.httpcomponents</groupId>
+		        <artifactId>httpclient</artifactId>
+		        <version>4.5.2</version>
+		    </dependency>
+		    <dependency>
+		        <groupId>org.apache.httpcomponents</groupId>
+		        <artifactId>httpclient-cache</artifactId>
+		        <version>4.5.2</version>
+		    </dependency>
+		    <dependency>
+		        <groupId>org.apache.httpcomponents</groupId>
+		        <artifactId>httpcore</artifactId>
+		        <version>4.4.5</version>
+		    </dependency>
+		    <dependency>
+		        <groupId>org.apache.httpcomponents</groupId>
+		        <artifactId>httpmime</artifactId>
+		        <version>4.5.2</version>
+		    </dependency>
+		    
+		    <!-- testng -->
+			<dependency>
+			    <groupId>org.testng</groupId>
+			    <artifactId>testng</artifactId>
+			    <version>6.9.10</version>
+			</dependency>
+			
+			<!-- 银联加解密依赖 -->
+			<dependency>
+			    <groupId>org.bouncycastle</groupId>
+			    <artifactId>bcprov-jdk15on</artifactId>
+			    <version>1.55</version>
+			</dependency>
+			<dependency>
+			    <groupId>org.bouncycastle</groupId>
+			    <artifactId>bcprov-jdk16</artifactId>
+			    <version>1.46</version>
+			</dependency>
+			
+			<dependency>
+			    <groupId>com.sun.mail</groupId>
+			    <artifactId>javax.mail</artifactId>
+			    <version>1.5.6</version>
+			</dependency>
+			
+			<dependency>
+			    <groupId>org.owasp.esapi</groupId>
+			    <artifactId>esapi</artifactId>
+			    <version>2.1.0.1</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+			
+				<plugin>  
+			        <groupId>org.apache.maven.plugins</groupId>  
+			        <artifactId>maven-source-plugin</artifactId>  
+			        <version>2.4</version>  
+			        <executions>  
+			          <execution>
+			            <id>attach-sources</id>  
+			            <phase>verify</phase><!--要绑定到的生命周期的阶段 在verify之后，install之前执行下面指定的goal -->  
+			            <goals>  
+			              <goal>jar-no-fork</goal>
+			            </goals>  
+			          </execution>  
+			        </executions>  
+			    </plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>2.6</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.1</version>
+					<configuration>
+						<source>1.8</source>
+						<target>1.8</target>
+						<encoding>UTF-8</encoding>
+						<showWarnings>true</showWarnings>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>2.5</version>
+					<configuration>
+						<archive>
+							<manifest>
+								<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							</manifest>
+						</archive>
+					</configuration>
+				</plugin>
+				<!-- maven生成mybatis XML的插件 -->
+				<plugin>
+					<groupId>org.mybatis.generator</groupId>
+					<artifactId>mybatis-generator-maven-plugin</artifactId>
+					<version>1.3.2</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>

@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fc.pay.boss.dao.BossMenuMapper">
+	<resultMap id="BaseResultMap" type="com.fc.pay.boss.entity.BossMenu" >
+		<id column="id" property="id" jdbcType="BIGINT" />
+		<result column="version" property="version" jdbcType="BIGINT" />
+		<result column="creater" property="creater" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="editor" property="editor" jdbcType="VARCHAR" />
+		<result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+		<result column="status" property="status" jdbcType="VARCHAR" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+		<result column="is_leaf" property="isLeaf" jdbcType="VARCHAR" />
+		<result column="level" property="level" jdbcType="SMALLINT" />
+		<result column="parent_id" property="parentId" jdbcType="BIGINT" />
+		<result column="icon" property="icon" jdbcType="VARCHAR" />
+		<result column="number" property="number" jdbcType="VARCHAR" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="url" property="url" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+		id, version, creater, create_time AS createTime, editor, edit_time AS editTime, status, remark, is_leaf AS isLeaf, level, parent_id AS parentId, icon, number, name, url
+	</sql>
+
+	<insert id="insertSelective" parameterType="BossPermission" useGeneratedKeys="true" keyProperty="id">
+		insert into boss_menu
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+		  <if test="id != null" >
+		    id,
+		  </if>
+		  <if test="version != null" >
+		    version,
+		  </if>
+		  <if test="creater != null" >
+		    creater,
+		  </if>
+		  <if test="createTime != null" >
+		    create_time,
+		  </if>
+		  <if test="editor != null" >
+		    editor,
+		  </if>
+		  <if test="editTime != null" >
+		    edit_time,
+		  </if>
+		  <if test="status != null" >
+		    status,
+		  </if>
+		  <if test="remark != null" >
+		    remark,
+		  </if>
+		  <if test="isLeaf != null" >
+		    is_leaf,
+		  </if>
+		  <if test="level != null" >
+		    level,
+		  </if>
+		  <if test="parentId != null" >
+		    parent_id,
+		  </if>
+		  <if test="icon != null" >
+		    icon,
+		  </if>
+		  <if test="number != null" >
+		    number,
+		  </if>
+		  <if test="name != null" >
+		    name,
+		  </if>
+		  <if test="url != null" >
+		    url,
+		  </if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides="," >
+		  <if test="id != null" >
+		    #{id,jdbcType=BIGINT},
+		  </if>
+		  <if test="version != null" >
+		    #{version,jdbcType=BIGINT},
+		  </if>
+		  <if test="creater != null" >
+		    #{creater,jdbcType=VARCHAR},
+		  </if>
+		  <if test="createTime != null" >
+		    #{createTime,jdbcType=TIMESTAMP},
+		  </if>
+		  <if test="editor != null" >
+		    #{editor,jdbcType=VARCHAR},
+		  </if>
+		  <if test="editTime != null" >
+		    #{editTime,jdbcType=TIMESTAMP},
+		  </if>
+		  <if test="status != null" >
+		    #{status,jdbcType=VARCHAR},
+		  </if>
+		  <if test="remark != null" >
+		    #{remark,jdbcType=VARCHAR},
+		  </if>
+		  <if test="isLeaf != null" >
+		    #{isLeaf,jdbcType=VARCHAR},
+		  </if>
+		  <if test="level != null" >
+		    #{level,jdbcType=SMALLINT},
+		  </if>
+		  <if test="parentId != null" >
+		    #{parentId,jdbcType=BIGINT},
+		  </if>
+		  <if test="icon != null" >
+		    #{icon,jdbcType=VARCHAR},
+		  </if>
+		  <if test="number != null" >
+		    #{number,jdbcType=VARCHAR},
+		  </if>
+		  <if test="name != null" >
+		    #{name,jdbcType=VARCHAR},
+		  </if>
+		  <if test="url != null" >
+		    #{url,jdbcType=VARCHAR},
+		  </if>
+		</trim>
+	</insert>
+
+	<update id="updateSelectiveById" parameterType="com.fc.pay.boss.entity.BossMenu" >
+		update boss_menu
+		<set >
+			<if test="version != null" >
+				version = #{version,jdbcType=BIGINT},
+			</if>
+			<if test="creater != null" >
+				creater = #{creater,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null" >
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="editor != null" >
+				editor = #{editor,jdbcType=VARCHAR},
+			</if>
+			<if test="editTime != null" >
+				edit_time = #{editTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="status != null" >
+				status = #{status,jdbcType=VARCHAR},
+			</if>
+			<if test="remark != null" >
+				remark = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="isLeaf != null" >
+				is_leaf = #{isLeaf,jdbcType=VARCHAR},
+			</if>
+			<if test="level != null" >
+				level = #{level,jdbcType=SMALLINT},
+			</if>
+			<if test="parentId != null" >
+				parent_id = #{parentId,jdbcType=BIGINT},
+			</if>
+			<if test="icon != null" >
+				icon = #{icon,jdbcType=VARCHAR},
+			</if>
+			<if test="number != null" >
+				number = #{number,jdbcType=VARCHAR},
+			</if>
+			<if test="name != null" >
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="url != null" >
+				url = #{url,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+	
+  	<delete id="deleteById" parameterType="java.lang.Long" >
+    	delete from boss_menu
+    	where id = #{id,jdbcType=BIGINT}
+ 	</delete>
+ 	
+	<select id="selectCount" resultType="Integer" parameterType="java.lang.Long" >
+		select count(1) from boss_menu
+		<where>
+			<if test="name != null and name != ''">
+				and name = #{name}
+			</if>
+			<if test="id != null and id != ''">
+				and id != #{id}
+			</if>
+			<if test="parentId != null and parentId != ''">
+				and parent_id = #{parentId}
+			</if>
+		</where>
+	</select>
+		
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+		select 
+		<include refid="Base_Column_List" />
+		from boss_menu
+		where id = #{id,jdbcType=BIGINT}
+	</select>
+		
+	<select id="selectList" resultMap="BaseResultMap" parameterType="Map" >
+		select 
+		<include refid="Base_Column_List" />
+		from boss_menu
+		order by number asc
+	</select> 		
+  			
+	<!-- 查询用户能访问的菜单 -->
+	<select id="findMenuByOperatorId" parameterType="Long" resultType="BossMenu" >
+		SELECT 
+			bm.id, bm.version, bm.creater, bm.create_time AS createTime, bm.editor, bm.edit_time AS editTime, 
+			bm.status, bm.remark, is_leaf AS isLeaf, bm.level, bm.parent_id AS parentId, icon, number, name, url
+		FROM boss_menu bm 
+		INNER JOIN boss_menu_role bmr ON bm.id = bmr.menu_id
+		INNER JOIN(
+			SELECT br.id FROM boss_role br
+			INNER JOIN boss_role_operator bro ON br.id = bro.role_id
+			INNER JOIN boss_operator bo ON bo.id = bro.operator_id
+			WHERE bo.id = #{operatorId}
+		) role ON role.id = bmr.role_id
+		WHERE bm.status='ACTIVE'
+		GROUP BY bm.id ORDER BY bm.number ASC	
+	</select>
+	
+	<!-- 查询菜单及菜单下的权限 -->
+	<select id="findMenuWithPermission" parameterType="Long" resultMap="menuWithPermissionResult">
+		SELECT
+			id,name,parent_id
+		FROM boss_menu
+	</select>
+	
+	<!-- 查询菜单及菜单下的权限 -->
+	<select id="selectAllMenus" parameterType="Long" resultType="BossMenu">
+		SELECT
+			id,name,parent_id parentId
+		FROM boss_menu
+	</select>
+	
+	<!-- 带权限信息的菜单结果集 -->
+	<resultMap type="BossMenu" id="menuWithPermissionResult">
+		 <id property="id" column="id"/>
+		 <result property="name" column="name"/>
+		 <result property="parentId" column="parent_id"/>
+		 <collection property="permissions" ofType="BossPermission" column="id" select="com.fc.pay.boss.dao.BossPermissionMapper.selectPermissionByMenuID" />
+	</resultMap>	
+	
+</mapper>

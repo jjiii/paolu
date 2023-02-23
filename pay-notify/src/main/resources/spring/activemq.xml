@@ -1,0 +1,84 @@
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jms="http://www.springframework.org/schema/jms"
+	xmlns:amq="http://activemq.apache.org/schema/core"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://activemq.apache.org/schema/core
+	http://activemq.apache.org/schema/core/activemq-core.xsd
+	http://www.springframework.org/schema/jms
+	http://www.springframework.org/schema/jms/spring-jms.xsd">
+	
+	
+	<context:component-scan base-package="com.fc.notify.listener"/>
+	<jms:annotation-driven/>
+	
+	<!-- <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"> 
+		<property name="location" value="classpath:mq_config.properties" /> </bean> -->
+	
+	<bean id="activeMQConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<property name="brokerURL" value="tcp://activemq.carisok.com:61616" />
+		<!-- <property name="userName" value="${mq.userName}"></property> <property 
+			name="password" value="${mq.password}"></property> -->
+	</bean>
+	
+	<bean id="cachingConnectionFactory" class="org.springframework.jms.connection.CachingConnectionFactory">
+        <property name="targetConnectionFactory" ref="activeMQConnectionFactory"></property>
+        <property name="sessionCacheSize" value="30" />
+    </bean>
+
+	
+	
+	
+	<!-- 定义JmsTemplate的Queue类型 -->
+	<!-- <bean id="mappingJackson2MessageConverter" class="org.springframework.jms.support.converter.MappingJackson2MessageConverter"></bean>
+	<bean id="userMessageConverter" class="com.fc.notify.controller.UserMessageConverter"></bean> -->
+	
+    <bean id="queueTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <constructor-arg ref="cachingConnectionFactory" />
+        <property name="pubSubDomain" value="false" />
+        <!-- <property name="defaultDestination" ref="oderSuccess" /> -->
+        <!-- 默认使用，不用配置 -->
+       <!-- <property name="messageConverter">
+            <bean class="org.springframework.jms.support.converter.SimpleMessageConverter" />
+       </property> -->
+    </bean>
+    
+    
+    
+    
+	<!-- 默认的队列名 -->
+	<!-- <bean id="oderSuccess" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg> <value>oderSuccess</value> </constructor-arg>
+	</bean> -->
+	
+	
+	<!--  消息监听适配器对应的监听容器 
+	<bean id="jmsContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+	    <property name="connectionFactory" ref="cachingConnectionFactory"/>
+	    <property name="destination" ref="queueDestination"/>
+	    <property name="messageListener" ref="messageListenerAdapter" />
+	</bean>
+	
+	
+	消息监听适配器
+	<bean id="messageListenerAdapter" class="org.springframework.jms.listener.adapter.MessageListenerAdapter">
+		<constructor-arg>
+        	<bean class="com.fc.notify.listener.MessageListener"/>
+    	</constructor-arg>
+    	如果不配做Spring会默认调用目标处理器的handleMessage方法
+        <property name="defaultListenerMethod" value="handleMessage" />
+	    <property name="messageConverter" ref="userMessageConverter"/>  
+	</bean> -->
+	
+	<jms:listener-container destination-type="queue" container-type="default" connection-factory="cachingConnectionFactory" acknowledge="auto">
+        <jms:listener destination="successOder" ref="successOderListener"/>
+        <!-- <jms:listener destination="successRefund" ref="successRefundListener"/> -->
+    </jms:listener-container>
+	
+</beans>
