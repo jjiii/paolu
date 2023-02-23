@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <jdbc>
+        <!-- <driver>org.mariadb.jdbc.Driver</driver>
+        <url>jdbc:mariadb://192.168.0.123:3306</url>
+        <user>root</user>
+        <password>test000000</password> -->
+        <driver>org.h2.Driver</driver>
+        <url>jdbc:h2:~/test;MODE=MySQL;AUTO_SERVER=TRUE</url>
+        <user>sa</user>
+        <password></password>
+    </jdbc>
+    <generator>
+        
+        <database>
+        	<!--数据库名称-->
+            <inputSchema>PUBLIC</inputSchema>
+			<!--include和exclude用于控制为数据库中哪些表生成代码-->
+            <includes>.*</includes>
+            <!--<excludes></excludes>-->
+        </database>
+
+        <generate>
+            <!--生成dao和pojo-->
+            <daos>true</daos>
+            <pojos>true</pojos>
+            <!--把数据库时间类型映射到java 8时间类型-->
+            <javaTimeTypes>true</javaTimeTypes>
+            <!--<interfaces>true</interfaces>-->
+            <!--不在生成的代码中添加spring注释，比如@Repository-->
+            <springAnnotations>true</springAnnotations>
+        </generate>
+
+        <target>
+            <!--生成代码文件的包名及放置目录-->
+            <packageName>jj.tech.paolu.repository.jooq</packageName>
+            <directory>target/generated-sources/repository</directory>
+        </target>
+    </generator>
+</configuration>

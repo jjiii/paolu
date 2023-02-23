@@ -1,0 +1,64 @@
+##约定大于配置，请勿重复造轮
+server:                                                #服务端口
+  port: 8083
+
+##spring----------
+spring:
+#  jpa:
+#    show_sql: true
+#    properties:
+#      hibernate:
+#        format_sql: true
+  data:
+    rest:
+      base-path: /jpa
+  application:
+    name: book
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+#    url: jdbc:h2:@project.build.directory@/database/book;AUTO_SERVER=TRUE              #连接池Database 嵌入模式：jdbc:h2:~/test-jooq  FILE_LOCK=SOCKET MODE=MySQL;;AUTO_SERVER=TRUE
+    url: jdbc:h2:~/test;MODE=MySQL;AUTO_SERVER=TRUE
+    username: sa
+    password:
+    hikari:
+      driver-class-name: org.h2.Driver
+#    url: jdbc:mariadb://147.78.243.242:3306/test
+#    username: root
+#    password: open123
+#    hikari:
+#      driver-class-name: org.mariadb.jdbc.Driver
+
+  h2:
+    console:
+      enabled: true                                    #开启h2数据库的浏览器管理界面
+      #path: /h2-console                               #h2浏览器管理访问路径，默认：/h2-console
+  sql:
+    init:
+      mode: never                                      ##加载脚本datasource.initialize已弃用,spring.sql.init.mode=never/always 
+      continue-on-error: true                          #初始化错误，继续执行
+      encoding: utf-8                                  #加载sql文件的编码连接池ue                            #初始化错误，继续执行
+      data-locations: classpath:/sql/data-h2.sql
+      schema-locations: classpath:/sql/schema-h2.sql   #spring boot 默认启动使用springJDBC初始化数据脚本, 加载类路径下的 schema-${platform}.sql \ data-${platform}.sql数据
+      platform: h2
+  #elasticsearch:
+    #jest:
+      #uris: http://loalhost:9200
+      #read-timeout: 1000
+# 多数据源    
+# app:
+#  datasource:
+#    type: com.zaxxer.hikari.HikariDataSource
+#    jdbcUrl: jdbc:h2:~/test-jooq;AUTO_SERVER=TRUE
+#    username: sa
+#    password:
+#    ##连接池  
+#    hikari:                                            
+#      driver-class-name: org.h2.Driver
+  
+logging:
+  level:
+    #root: info   
+    org.jooq: debug
+    org.hibernate: debug
+    org.springframework.data.jpa: debug
+    org.springframework.amqp: debug

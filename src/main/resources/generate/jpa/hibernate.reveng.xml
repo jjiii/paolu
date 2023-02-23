@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering SYSTEM "http://hibernate.org/dtd/hibernate-reverse-engineering-3.0.dtd">
+ 
+<hibernate-reverse-engineering>
+	<!-- match-catalog不支持名称有“-”的值,如“test-bbb”,H2在查询的时候会报错 -->
+	<schema-selection  match-catalog="test" match-schema="PUBLIC" match-table=".*"/>
+	<!-- <schema-selection match-catalog="test" match-schema="test" match-table=".*"/> -->
+ 	<!-- <table-filter match-schema="book" match-name=".*" exclude="true"/> -->
+	
+     <!-- <type-mapping>
+        <sql-type jdbc-type="DATE" hibernate-type="java.time.LocalDate"/>
+        <sql-type jdbc-type="TIMESTAMP" hibernate-type="java.time.LocalDateTime"/>
+     </type-mapping> -->
+</hibernate-reverse-engineering>

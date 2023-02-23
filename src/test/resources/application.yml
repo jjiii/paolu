@@ -1,0 +1,115 @@
+##boot 的思想是约定大于配置，所以能使用默认的行为就使用。请勿重复造轮谢谢
+server:                                                #服务端口
+  port: 8668
+  
+
+
+##eureka客户端----------
+eureka:                                                 #使用eureka做服务注册与发现, 你可以使用其他框架如： Consul,zookeeper等
+  instance:
+    #hostname: localhost
+    metadataMap:
+      instanceId: ${vcap.application.instance_id:${spring.application.name}:${spring.application.instance_id:${server.port}}}
+    
+  client:                                               #eureka只做心跳确认客户端是否up
+    healthcheck:                                        #使用spring actuator做服务健康检查，如连接池是否连上，更细粒度的检查可以实现com.netflix.appinfo.Health-CheckHandler接口
+      enabled: true
+    #registerWithEureka: true                            #是否把自己注册到eureka服务器, 默认为true
+    fetchRegistry: false                                #是否从其他Eurka Server获取注册信息,默认为true，单一服务器，不需要同步其他 server节点信息，所以设置为false
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka         #需要指向本地服务：http://${eureka.instance.hostname}:${server.port}/eureka/
+      
+  #server:
+    #waitTimeInMsWhenSyncEmpty: 0                       #在Eureka服务器获取不到集群里对等服务器上的实例时，需要等待的时间，单位为毫秒，默认为1000 * 60 * 5
+    #leaseRenewalIntervalInSeconds                      #client发送心跳给server端的频率
+    #leaseExpirationDurationInSeconds                   #最后一次收到客户端心跳后，等待下一次心跳的最大时间，过期则移除该客户端
+    #enable-self-preservation                           #是否开启自我保护模式，默认true
+
+
+##spring----------
+spring:
+  application:
+    name: userrrr
+  
+  ##H2
+  h2:
+    console:
+      enabled: true                                    #开启h2数据库的浏览器管理界面
+      #path: /h2-console                                #h2浏览器管理访问路径，默认：/h2-console
+      
+  ##数据源    
+  datasource:
+  
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:h2:~/test-jooq;AUTO_SERVER=TRUE              #连接池Database 嵌入模式：jdbc:h2:~/test-jooq  FILE_LOCK=SOCKET MODE=MySQL;;AUTO_SERVER=TRUE
+    username: sa
+    password:
+    
+    
+    ##加载脚本
+    platform: h2
+    initialize: true
+    schema: classpath:/sql/schema-h2.sql               ##spring boot 默认启动使用springJDBC初始化数据脚本, 加载类路径下的 schema-${platform}.sql \ data-${platform}.sql数据
+    data: classpath:/sql/data-h2.sql
+    sql-script-encoding: utf-8                         #加载sql文件的编码
+    continue-on-error: true                            #初始化错误，继续执行
+    
+    ##连接池  
+    hikari:                                            #hikari连接池,淘宝的东西少用，黄婆卖瓜
+      driver-class-name: org.h2.Driver
+ 
+  #elasticsearch:
+    #jest:
+      #uris: http://loalhost:9200
+      #read-timeout: 1000
+    
+  rabbitmq:
+    host: 120.78.15.214
+    port: 5672
+    username: locals
+    password: locals@2017
+    
+    
+  #spring cloud stream
+  cloud:
+    stream:
+      #rabbit:
+        #bindings:
+          #inputsss:
+            #consumer:
+              #queueNameGroupOnly: true
+            #producer:
+              #queueNameGroupOnly: true
+      bindings:
+        inputsss:
+          #content-type: application/x-java-object;type=xyz.ppya.tuibai.sso.user.A
+          destination: hello2                       # nstandardpriceTableExchange.nstandardpriceCalendarBizQueue
+          binder: rabbit1
+          group:  bbb
+          #producer:
+            #requiredGroups: hello2
+        outputsss:
+          #content-type: application/octet-stream
+          #content-type: application/x-java-object;type=xyz.ppya.tuibai.sso.user.A
+          destination: hello2
+          binder: rabbit1
+          group:  bbb
+      binders:
+         
+        rabbit1:
+          type: rabbit
+          environment:                              #设置enviroment属性时，spring cloud绑定的不再是上下文的子类，即外部配置的对象不再是spring cloud stream的默认值
+            spring:
+              rabbitmq:
+                host: 120.78.15.214
+                port: 5672
+                username: locals
+                password: locals@2017
+
+    
+
+logging:
+  level:
+    org.springframework.amqp: INFO
+    org.jooq: debug
+    

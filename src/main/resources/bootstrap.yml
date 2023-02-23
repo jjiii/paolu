@@ -1,0 +1,19 @@
+spring:
+  cloud:
+    consul:
+      host: 147.78.243.242
+      port: 8500
+      discovery:
+        acl-token: b1gs33cr3t
+        #service-name: ${spring.application.name}
+        heartbeat:
+          enabled: true
+        deregister: true
+        health-check-critical-timeout: 30s
+#      config:
+#        acl-token: b1gs33cr3t
+      #discovery:
+        #register-health-check: true
+#      discovery:
+#        ip-address: 192.168.43.15
+#        #hostname: doudou
