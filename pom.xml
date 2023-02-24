@@ -249,7 +249,7 @@
                 <executions>
                     <execution>
                         <id>unpack</id>
-                        <phase>compile</phase>
+                        <phase>build</phase>
                         <goals>
                             <goal>unpack</goal>
                         </goals>
