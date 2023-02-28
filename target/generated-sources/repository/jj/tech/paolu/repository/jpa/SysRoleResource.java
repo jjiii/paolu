@@ -1,5 +1,5 @@
 package jj.tech.paolu.repository.jpa;
-// Generated 2023年2月24日 上午9:45:43 by Hibernate Tools 6.1.5.Final
+// Generated 2023年2月28日 下午4:36:19 by Hibernate Tools 6.1.5.Final
 
 
 import jakarta.persistence.AttributeOverride;
