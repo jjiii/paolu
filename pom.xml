@@ -267,7 +267,7 @@
             </plugin>
 
 			<plugin>
-				<!-- 选择这个打包方式是因为熟悉，1.4.13版本会到dockerhub取镜像，打包时间过长:dockerfile build -->
+				<!-- 选择这个打包方式是因为熟悉，1.4.13版本会到dockerhub取镜像，打包时间过长:dockerfile:build -->
 	            <groupId>com.spotify</groupId>
 			    <artifactId>dockerfile-maven-plugin</artifactId>
 			    <version>1.4.10</version>

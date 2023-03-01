@@ -1,10 +1,12 @@
 FROM eclipse-temurin:18-jre-alpine
-WORKDIR /tmp
+USER root
 VOLUME /tmp
+WORKDIR /tmp
 COPY mvnw .
 COPY .mvn .mvn
 COPY pom.xml .
 COPY src src
+RUN ls
 RUN chmod a+x ./mvnw && ./mvnw package -DskipTests
 ARG DEPENDENCY=target/dependency
 COPY ${DEPENDENCY}/BOOT-INF/lib /app/lib
