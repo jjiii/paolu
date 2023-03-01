@@ -366,7 +366,7 @@
 					</dependency>
 				</dependencies>
 				<configuration>
-					<configurationFile>/src/main/resources/generate/jooq/JooqConfig.xml</configurationFile>
+					<configurationFile>${project.basedir}/src/main/resources/generate/jooq/JooqConfig.xml</configurationFile>
 				</configuration>
 			</plugin>
 			
@@ -443,6 +443,7 @@
 		      
 		</plugins>
 	</build>
+	
 	
 	
 	
