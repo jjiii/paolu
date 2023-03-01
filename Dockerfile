@@ -1,6 +1,11 @@
 FROM eclipse-temurin:18-jre-alpine
+WORKDIR /tmp
 VOLUME /tmp
-RUN ./mvnw install -DskipTests
+COPY mvnw .
+COPY .mvn .mvn
+COPY pom.xml .
+COPY src src
+RUN chmod a+x ./mvnw && ./mvnw package -DskipTests
 ARG DEPENDENCY=target/dependency
 COPY ${DEPENDENCY}/BOOT-INF/lib /app/lib
 COPY ${DEPENDENCY}/META-INF /app/META-INF
