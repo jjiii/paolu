@@ -1,16 +1,12 @@
-FROM eclipse-temurin:18-jre-alpine as build
-USER root
-WORKDIR /compile
-COPY mvnw .
-COPY .mvn .mvn
+FROM maven:3.9.0-eclipse-temurin-19-alpine as build
+WORKDIR /workspace
 COPY pom.xml .
 COPY src src
-RUN chmod a+x ./mvnw 
-RUN ./mvnw package -DskipTests
+RUN mvn -B -f ./pom.xml -s /usr/share/maven/ref/settings-docker.xml package -DskipTests
 
 FROM eclipse-temurin:18-jre-alpine
 VOLUME /tmp
-ARG DEPENDENCY=target/dependency
+ARG DEPENDENCY=/workspace/target/dependency
 COPY --from=build ${DEPENDENCY}/BOOT-INF/lib /app/lib
 COPY --from=build ${DEPENDENCY}/META-INF /app/META-INF
 COPY --from=build ${DEPENDENCY}/BOOT-INF/classes /app
