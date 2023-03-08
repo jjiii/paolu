@@ -458,7 +458,7 @@
 				</snapshots>
 			</repository>
 			<!-- hibernate最新快照库需要jboss中央库 -->
-			<!-- <repository>
+			<repository>
 			    <id>jboss-ga-repository</id>
 			    <url>https://repository.jboss.org/nexus/content/repositories/public/</url>
 			    <releases>
@@ -478,7 +478,7 @@
 		    <repository>
 		        <id>spring-milestones</id>
 		        <url>https://repo.spring.io/milestone</url>
-		    </repository> -->
+		    </repository>
 		</repositories>
 	
 		<pluginRepositories>
@@ -493,7 +493,7 @@
 					<enabled>true</enabled>
 				</snapshots>
 			</pluginRepository>
-			<!-- <pluginRepository>
+			<pluginRepository>
 		      <id>jboss-ga-plugin-repository</id>
 		      <url>https://repository.jboss.org/nexus/content/repositories/public/</url>
 		      <releases>
@@ -510,7 +510,8 @@
 		    <pluginRepository>
 		        <id>spring-milestones</id>
 		        <url>https://repo.spring.io/milestone</url>
-		    </pluginRepository> -->
+		    </pluginRepository>
 		</pluginRepositories>
-	
+		
+		
 </project>
