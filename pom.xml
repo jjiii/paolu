@@ -16,8 +16,8 @@
 	
 	<properties>
 		<java.version>18</java.version>
+		<jooq.version>3.17.8</jooq.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<jooq.version>3.17.5</jooq.version>
 		<!-- <start-class>...</start-class>
 		<docker.image.prefix>springcloud</docker.image.prefix> -->
 	</properties>
