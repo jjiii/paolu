@@ -16,8 +16,8 @@
 	
 	<properties>
 		<java.version>18</java.version>
+		<jooq.version>3.17.8</jooq.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<jooq.version>3.17.5</jooq.version>
 		<!-- <start-class>...</start-class>
 		<docker.image.prefix>springcloud</docker.image.prefix> -->
 	</properties>
@@ -174,12 +174,12 @@
 	    <dependency>
 		    <groupId>org.springdoc</groupId>
 		    <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-		    <version>2.0.0-RC2</version>
+		    <version>2.0.2</version>
 	    </dependency>
 	    <dependency>
 		    <groupId>org.springdoc</groupId>
 		    <artifactId>springdoc-openapi-starter-common</artifactId>
-		    <version>2.0.0-RC2</version>
+		    <version>2.0.1</version>
 		</dependency>
 	   
 		<dependency>
@@ -303,8 +303,7 @@
 				<artifactId>sql-maven-plugin</artifactId>
 				<version>1.5</version>
 				<configuration>
-                    <skip>${maven.test.skip}</skip>
-		            
+                    <!-- <skip>${maven.test.skip}</skip> -->
                 </configuration>
 
 				<executions>
@@ -447,9 +446,9 @@
 	
 	<repositories>
 			<repository>
-				<id>nexus</id>
-				<name>local private nexus</name>
-				<url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+				<id>aliyun-public</id>
+				<name>aliyun-public</name>
+				<url>https://maven.aliyun.com/repository/public</url>
 				<releases>
 					<enabled>true</enabled>
 				</releases>
@@ -457,17 +456,30 @@
 					<enabled>true</enabled>
 				</snapshots>
 			</repository>
-			<!-- hibernate最新快照库需要jboss中央库 -->
-			<repository>
-			    <id>jboss-ga-repository</id>
-			    <url>https://repository.jboss.org/nexus/content/repositories/public/</url>
-			    <releases>
-			        <enabled>true</enabled>
-			    </releases>
-			    <snapshots>
-			        <enabled>true</enabled>
-			    </snapshots>
-		    </repository>
+            <repository>
+				<id>central</id>
+				<name>central</name>
+				<url>https://maven.aliyun.com/repository/central</url>
+				<releases>
+					<enabled>true</enabled>
+				</releases>
+				<snapshots>
+					<enabled>true</enabled>
+				</snapshots>
+			</repository>
+        
+            
+            <repository>
+              <id>spring</id>
+              <url>https://maven.aliyun.com/repository/spring</url>
+              <releases>
+                <enabled>true</enabled>
+              </releases>
+              <snapshots>
+                <enabled>true</enabled>
+              </snapshots>
+            </repository>
+			
 			<repository>
 		        <id>spring-snapshots</id>
 		        <url>https://repo.spring.io/snapshot</url>
@@ -483,9 +495,9 @@
 	
 		<pluginRepositories>
 			<pluginRepository>
-				<id>nexus</id>
-				<name>local private nexus</name>
-				<url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+				<id>aliyun-plugin</id>
+				<name>aliyun-plugin</name>
+				<url>https://maven.aliyun.com/repository/public</url>
 				<releases>
 					<enabled>true</enabled>
 				</releases>
@@ -493,16 +505,18 @@
 					<enabled>true</enabled>
 				</snapshots>
 			</pluginRepository>
-			<pluginRepository>
-		      <id>jboss-ga-plugin-repository</id>
-		      <url>https://repository.jboss.org/nexus/content/repositories/public/</url>
-		      <releases>
-		        <enabled>true</enabled>
-		      </releases>
-		      <snapshots>
-		        <enabled>true</enabled>
-		      </snapshots>
-		    </pluginRepository>
+            <pluginRepository>
+				<id>aliyun-plugin-central</id>
+				<name>aliyun-plugin-central</name>
+				<url>https://maven.aliyun.com/repository/central</url>
+				<releases>
+					<enabled>true</enabled>
+				</releases>
+				<snapshots>
+					<enabled>true</enabled>
+				</snapshots>
+			</pluginRepository>
+			
 			<pluginRepository>
 		        <id>spring-snapshots</id>
 		        <url>https://repo.spring.io/snapshot</url>
