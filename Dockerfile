@@ -4,8 +4,7 @@ COPY pom.xml .
 COPY src src
 RUN --mount=type=cache,target=/root/.m2,id=m2,sharing=locked \
 mvn package -Dmaven.test.skip
-RUN cd target/dependency
-RUN jar -xf ../*.jar
+RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
 
 FROM eclipse-temurin:18-jre-alpine
 VOLUME /tmp
