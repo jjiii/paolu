@@ -7,8 +7,7 @@ mvn package -Dmaven.test.skip
 RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
 
 FROM eclipse-temurin:18-jre-alpine
-VOLUME /tmp
-ARG DEPENDENCY=/workspace/target/dependency
+ARG DEPENDENCY=target/dependency
 COPY --from=build ${DEPENDENCY}/BOOT-INF/lib /app/lib
 COPY --from=build ${DEPENDENCY}/META-INF /app/META-INF
 COPY --from=build ${DEPENDENCY}/BOOT-INF/classes /app
