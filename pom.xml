@@ -243,7 +243,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 			
-			<plugin>
+			<!-- <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
                 <executions>
@@ -264,7 +264,7 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin> -->
 
 			<plugin>
 				<!-- 选择这个打包方式是因为熟悉，1.4.13版本会到dockerhub取镜像，打包时间过长:dockerfile:build -->
