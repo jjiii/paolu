@@ -1,8 +1,9 @@
 spring:
   cloud:
     consul:
-      host: 147.78.243.242
-      port: 8500
+      scheme: https
+      host: consul.164500.xyz
+      port: 443
       discovery:
         acl-token: b1gs33cr3t
         #service-name: ${spring.application.name}
