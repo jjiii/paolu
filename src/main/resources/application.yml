@@ -1,6 +1,6 @@
 ##约定大于配置，请勿重复造轮
 server:                                                #服务端口
-  port: 8083
+  port: 8888
 
 ##spring----------
 spring:
@@ -13,7 +13,7 @@ spring:
     rest:
       base-path: /jpa
   application:
-    name: book
+    name: paolu
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
 #    url: jdbc:h2:@project.build.directory@/database/book;AUTO_SERVER=TRUE              #连接池Database 嵌入模式：jdbc:h2:~/test-jooq  FILE_LOCK=SOCKET MODE=MySQL;;AUTO_SERVER=TRUE

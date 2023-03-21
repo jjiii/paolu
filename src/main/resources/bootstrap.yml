@@ -5,12 +5,14 @@ spring:
       host: consul.164500.xyz
       port: 443
       discovery:
-        acl-token: b1gs33cr3t
-        #service-name: ${spring.application.name}
+        acl-token: b2gs44ddr3
+#        service-name: ${spring.application.name}
+#        https://github.com/spring-cloud/spring-cloud-consul/pull/590#issuecomment-1473038044
         heartbeat:
           enabled: true
         deregister: true
         health-check-critical-timeout: 30s
+        
 #      config:
 #        acl-token: b1gs33cr3t
       #discovery:
