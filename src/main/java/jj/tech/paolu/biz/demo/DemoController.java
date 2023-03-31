@@ -39,10 +39,7 @@ public class DemoController {
 //  @Autowired SysAdminDao sysAdminDaos;
   
   
-  /**
-   * JOOQ默认嵌入式事务
-   * @return
-   */
+
   @GetMapping("/")
   @Transactional
   public Object mian() {
@@ -103,7 +100,10 @@ public class DemoController {
 	  return "OK";
   }
   
-
+  /**
+   * JOOQ默认嵌入式事务
+   * @return
+   */
   @RequestMapping("/add")
   public Object add() {
 
