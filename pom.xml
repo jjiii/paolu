@@ -15,7 +15,7 @@
 	</parent>
 	
 	<properties>
-		<java.version>18</java.version>
+		<java.version>20</java.version>
 		<jooq.version>3.17.8</jooq.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- <start-class>...</start-class>
@@ -28,7 +28,7 @@
 	        <dependency>
 	            <groupId>org.springframework.cloud</groupId>
 	            <artifactId>spring-cloud-dependencies</artifactId>
-	            <version>2022.0.1</version>
+	            <version>2022.0.3-SNAPSHOT</version>
 	            <type>pom</type>
 	            <scope>import</scope>
 	        </dependency>
