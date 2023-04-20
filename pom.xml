@@ -457,8 +457,8 @@
 				</snapshots>
 			</repository>
             <repository>
-				<id>central</id>
-				<name>central</name>
+				<id>aliyun-central</id>
+				<name>aliyun-central</name>
 				<url>https://maven.aliyun.com/repository/central</url>
 				<releases>
 					<enabled>true</enabled>
@@ -467,10 +467,8 @@
 					<enabled>true</enabled>
 				</snapshots>
 			</repository>
-        
-            
             <repository>
-              <id>spring</id>
+              <id>aliyun-spring</id>
               <url>https://maven.aliyun.com/repository/spring</url>
               <releases>
                 <enabled>true</enabled>
@@ -478,8 +476,7 @@
               <snapshots>
                 <enabled>true</enabled>
               </snapshots>
-            </repository>
-			
+            </repository>	
 			<repository>
 		        <id>spring-snapshots</id>
 		        <url>https://repo.spring.io/snapshot</url>
@@ -491,9 +488,9 @@
 		        <id>spring-milestones</id>
 		        <url>https://repo.spring.io/milestone</url>
 		    </repository>
-		</repositories>
+	</repositories>
 	
-		<pluginRepositories>
+	<pluginRepositories>
 			<pluginRepository>
 				<id>aliyun-plugin</id>
 				<name>aliyun-plugin</name>
@@ -525,7 +522,7 @@
 		        <id>spring-milestones</id>
 		        <url>https://repo.spring.io/milestone</url>
 		    </pluginRepository>
-		</pluginRepositories>
+	</pluginRepositories>
 		
 		
 </project>
