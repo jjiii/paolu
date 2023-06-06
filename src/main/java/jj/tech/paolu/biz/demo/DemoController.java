@@ -29,8 +29,7 @@ import jj.tech.paolu.utils.IDHelp;
 @RestController
 public class DemoController {
 
-  @Value("${server.port}")
-  String port;
+  @Value("${server.port}") String port;
 
   @Autowired DSLContext dsl;
   @Autowired AService aService;
@@ -46,7 +45,7 @@ public class DemoController {
 	  aService.aa();
 	  try {
 	  aService.bb();
-	  }catch(Exception e) {
+	  }catch(Exception e) { 
 		  e.printStackTrace();
 	  }
       return "ok";

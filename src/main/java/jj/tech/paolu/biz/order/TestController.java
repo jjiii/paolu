@@ -28,6 +28,7 @@ public class TestController {
 		SysRoleResourceId id = new SysRoleResourceId(1L,1L);
 		
 		Object ss = sysRoleResourceJpaDao.findById(id);
+		
 		return ss;
 	}
 	
